@@ -1,0 +1,28 @@
+﻿benchmark:
+  prompt_csv: data/prompts_gemma_lfm_temporal_180.csv
+  domains:
+    - logical_reasoning
+    - algebraic_geometry
+    - analogy_composition
+    - factual_recall
+    - narrative_structure
+    - symbolic_code
+  prompts_per_domain: 30
+  seed: 20260304
+
+evaluation:
+  bootstrap_samples: 40
+  permutation_samples: 20
+  knn_k: 10
+  reference_domains:
+    - logical_reasoning
+    - algebraic_geometry
+  contrast_domains:
+    - narrative_structure
+    - factual_recall
+
+extraction:
+  max_prompts: 180
+  layers: [0, 4, 8, 12]
+  batch_size: 2
+  max_length: 192

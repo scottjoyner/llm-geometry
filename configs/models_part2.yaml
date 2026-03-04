@@ -1,0 +1,73 @@
+﻿models:
+  - name: lfm2_5_1_2b_instruct
+    repo_id: LiquidAI/LFM2.5-1.2B-Instruct
+    params_b: 1.2
+    family: lfm
+    revision: main
+    size_bucket: 1B
+  - name: qwen3_5_0_8b
+    repo_id: Qwen/Qwen3.5-0.8B
+    params_b: 0.8
+    family: qwen
+    revision: main
+    size_bucket: 1B
+  - name: gemma3_1b_it
+    repo_id: google/gemma-3-1b-it
+    params_b: 1.0
+    family: gemma
+    revision: main
+    size_bucket: 1B
+  - name: qwen3_5_4b
+    repo_id: Qwen/Qwen3.5-4B
+    params_b: 4.0
+    family: qwen
+    revision: main
+    size_bucket: 3-5B
+  - name: gemma3_4b_it
+    repo_id: google/gemma-3-4b-it
+    params_b: 4.0
+    family: gemma
+    revision: main
+    size_bucket: 3-5B
+  - name: phi4_mini_instruct
+    repo_id: microsoft/Phi-4-mini-instruct
+    params_b: 3.8
+    family: phi
+    revision: main
+    size_bucket: 3-5B
+  - name: lfm2_8b_a1b
+    repo_id: LiquidAI/LFM2-8B-A1B
+    params_b: 8.0
+    family: lfm
+    revision: main
+    size_bucket: 8B
+  - name: llama3_8b_instruct
+    repo_id: meta-llama/Meta-Llama-3-8B-Instruct
+    params_b: 8.0
+    family: llama
+    revision: main
+    size_bucket: 8B
+  - name: devstral_small_2507
+    repo_id: mistralai/Devstral-Small-2507
+    params_b: 24.0
+    family: mistral
+    revision: main
+    size_bucket: other
+    skip_extraction: true
+
+download:
+  allow_patterns:
+    - "*.json"
+    - "*.model"
+    - "*.txt"
+    - "*.py"
+    - "*.safetensors"
+    - "*.bin"
+    - "tokenizer*"
+
+extraction:
+  max_prompts: 360
+  max_new_tokens: 0
+  layers: [0, 4, 8, 12, 16]
+  batch_size: 2
+  max_length: 192

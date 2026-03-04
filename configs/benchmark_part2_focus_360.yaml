@@ -1,0 +1,28 @@
+﻿benchmark:
+  prompt_csv: data/prompts_part2_focus_360.csv
+  domains:
+    - logical_reasoning
+    - algebraic_geometry
+    - analogy_composition
+    - factual_recall
+    - narrative_structure
+    - symbolic_code
+  prompts_per_domain: 60
+  seed: 20260304
+
+evaluation:
+  bootstrap_samples: 60
+  permutation_samples: 40
+  knn_k: 10
+  reference_domains:
+    - logical_reasoning
+    - algebraic_geometry
+  contrast_domains:
+    - narrative_structure
+    - factual_recall
+
+extraction:
+  max_prompts: 360
+  layers: [0, 4, 8, 12, 16]
+  batch_size: 2
+  max_length: 192

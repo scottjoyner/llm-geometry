@@ -1,0 +1,36 @@
+﻿models:
+  - name: lfm2_8b_a1b
+    repo_id: LiquidAI/LFM2-8B-A1B
+    params_b: 8.0
+    family: lfm
+    revision: main
+    size_bucket: 8B
+  - name: qwen3_5_4b
+    repo_id: Qwen/Qwen3.5-4B
+    params_b: 4.0
+    family: qwen
+    revision: main
+    size_bucket: 3-5B
+  - name: gemma3_4b_it
+    repo_id: google/gemma-3-4b-it
+    params_b: 4.0
+    family: gemma
+    revision: main
+    size_bucket: 3-5B
+
+download:
+  allow_patterns:
+    - "*.json"
+    - "*.model"
+    - "*.txt"
+    - "*.py"
+    - "*.safetensors"
+    - "*.bin"
+    - "tokenizer*"
+
+extraction:
+  max_prompts: 360
+  max_new_tokens: 0
+  layers: [0, 4, 8, 12, 16]
+  batch_size: 2
+  max_length: 192

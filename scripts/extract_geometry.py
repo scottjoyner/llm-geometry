@@ -32,8 +32,12 @@ def main() -> None:
         max_length=int(ext_cfg.get("max_length", 256)),
     )
 
+    failures: list[tuple[str, str]] = []
     for model in cfg["models"]:
         if selection and model["name"] not in selection:
+            continue
+        if model.get("skip_extraction", False):
+            print(f"Skip {model['name']}: skip_extraction=true")
             continue
 
         model_path = Path(args.models_dir) / model["name"]
@@ -42,8 +46,17 @@ def main() -> None:
             continue
 
         out_path = out_dir / f"{model['name']}.npz"
-        extract_model_geometry(model["repo_id"], model_path, prompts, out_path, ex_cfg)
-        print(f"Saved geometry tensors: {out_path}")
+        try:
+            extract_model_geometry(model["repo_id"], model_path, prompts, out_path, ex_cfg)
+            print(f"Saved geometry tensors: {out_path}")
+        except Exception as e:
+            failures.append((model["name"], str(e)))
+            print(f"Failed {model['name']}: {e}")
+
+    if failures:
+        print("\nExtraction failures:")
+        for name, err in failures:
+            print(f"- {name}: {err}")
 
 
 if __name__ == "__main__":

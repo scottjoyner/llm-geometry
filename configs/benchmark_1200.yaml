@@ -1,0 +1,28 @@
+﻿benchmark:
+  prompt_csv: data/prompts_1200.csv
+  domains:
+    - logical_reasoning
+    - algebraic_geometry
+    - analogy_composition
+    - factual_recall
+    - narrative_structure
+    - symbolic_code
+  prompts_per_domain: 200
+  seed: 20260303
+
+evaluation:
+  bootstrap_samples: 400
+  permutation_samples: 300
+  knn_k: 10
+  reference_domains:
+    - logical_reasoning
+    - algebraic_geometry
+  contrast_domains:
+    - narrative_structure
+    - factual_recall
+
+extraction:
+  max_prompts: 1200
+  layers: [0, 4, 8, 12, 16]
+  batch_size: 8
+  max_length: 192

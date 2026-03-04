@@ -1,0 +1,10 @@
+﻿You are solving a geometry problem involving symmetry and invariance.
+Explain how vector spaces can represent compositional structure.
+Given two similar concepts, describe linear and non-linear relationships.
+Reason about nearest neighbors in a latent space.
+Explain how distance metrics influence clustering outcomes.
+Describe a scenario where cosine similarity fails.
+What does manifold curvature imply for interpolation quality?
+Explain dimensionality reduction tradeoffs for preserving geometry.
+Describe the meaning of isotropy in embedding spaces.
+How can representation collapse be detected quantitatively?

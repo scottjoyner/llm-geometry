@@ -1,0 +1,106 @@
+﻿\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\title{Geometric Alignment of Compact Language Models: A 1,200-Prompt Multidomain Benchmark}
+\author{Kipne et al.}
+\date{March 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We evaluate representational geometry across five compact language models (LFM2.5-1.2B-Instruct, Gemma-3-1B-IT, Qwen2.5-0.5B-Instruct, Qwen3-0.6B, Qwen3.5-0.8B) using a deterministic 1,200-prompt benchmark spanning six domains. Hidden-state geometry is compared with linear CKA, RSA, neighborhood overlap, and Procrustes residuals, with bootstrap confidence intervals and permutation tests. We find strong early-layer convergence and pair-specific deep-layer divergence, with significant domain effects in 58.0000\% of tested layer-pairs. We also present a Geometry Atlas visualization to communicate multidimensional geometric behavior.
+\end{abstract}
+
+\section{Introduction}
+Compact language models are increasingly deployed in resource-constrained systems, yet geometric comparability of their latent spaces remains under-characterized. Inspired by Vec2Vec-style representational alignment hypotheses, we study whether models under 5B parameters coalesce toward common geometric structures.
+
+\section{Benchmark and Methods}
+\textbf{Models.} LFM2.5-1.2B-Instruct, Gemma-3-1B-IT, Qwen2.5-0.5B-Instruct, Qwen3-0.6B, Qwen3.5-0.8B.\\
+\textbf{Prompts.} 1,200 total, six domains, 200 prompts/domain.\\
+\textbf{Layers.} $\{0,4,8,12,16\}$ pooled hidden-state representations.\\
+\textbf{Metrics.} CKA, RSA, KNN overlap@10, Procrustes residual; bootstrap CIs (40 samples, sample size 350) and permutation tests (20 samples).
+
+\section{Results}
+\subsection{Key Quantitative Outcomes}
+Strongest alignment: qwen2\_5\_0\_5b\_instruct vs qwen3\_0\_6b at layer\_0 (CKA=0.9947).\\
+Weakest alignment: qwen2\_5\_0\_5b\_instruct vs qwen3\_0\_6b at layer\_4 (CKA=0.0610).\\
+Mean CKA CI width: 0.0292.
+
+\subsection{Pairwise Mean Alignment}
+\begin{table}[h]
+\centering
+\begin{tabular}{lllrrr}
+\toprule
+Model A & Model B & Metric & Mean CKA & Mean RSA & Mean KNN \\
+\midrule
+lfm2\_5\_1\_2b\_instruct & qwen3\_5\_0\_8b & pair-mean & 0.9398 & 0.8534 & 0.5132 \\
+gemma3\_1b\_it & qwen3\_5\_0\_8b & pair-mean & 0.8147 & 0.8100 & 0.4640 \\
+gemma3\_1b\_it & lfm2\_5\_1\_2b\_instruct & pair-mean & 0.8008 & 0.7951 & 0.4463 \\
+qwen2\_5\_0\_5b\_instruct & qwen3\_5\_0\_8b & pair-mean & 0.6457 & 0.8613 & 0.5954 \\
+gemma3\_1b\_it & qwen2\_5\_0\_5b\_instruct & pair-mean & 0.6360 & 0.8133 & 0.4396 \\
+lfm2\_5\_1\_2b\_instruct & qwen2\_5\_0\_5b\_instruct & pair-mean & 0.5979 & 0.8080 & 0.4896 \\
+qwen3\_0\_6b & qwen3\_5\_0\_8b & pair-mean & 0.4623 & 0.8764 & 0.6105 \\
+lfm2\_5\_1\_2b\_instruct & qwen3\_0\_6b & pair-mean & 0.4597 & 0.7955 & 0.4953 \\
+gemma3\_1b\_it & qwen3\_0\_6b & pair-mean & 0.3571 & 0.8385 & 0.4436 \\
+qwen2\_5\_0\_5b\_instruct & qwen3\_0\_6b & pair-mean & 0.3149 & 0.8580 & 0.6294 \\
+\bottomrule
+\end{tabular}
+\caption{Mean pairwise alignment across sampled layers.}
+\end{table}
+
+\subsection{Geometry Health}
+\begin{table}[h]
+\centering
+\begin{tabular}{lrr}
+\toprule
+Model & Mean anisotropy & Mean participation ratio \\
+\midrule
+lfm2\_5\_1\_2b\_instruct & 0.2431 & 8.0972 \\
+qwen3\_5\_0\_8b & 0.2677 & 7.2500 \\
+gemma3\_1b\_it & 0.3727 & 5.8810 \\
+qwen2\_5\_0\_5b\_instruct & 0.5680 & 3.9010 \\
+qwen3\_0\_6b & 0.7175 & 3.1956 \\
+\bottomrule
+\end{tabular}
+\caption{Per-model geometry concentration and intrinsic dimensionality proxies.}
+\end{table}
+
+\section{Visualization Mechanism: Geometry Atlas}
+We provide a four-panel interactive visualization:
+(1) 3D manifold projection of per-model embeddings,
+(2) layer-wise alignment river (CKA heatmap),
+(3) radial model fingerprints over layers,
+(4) domain-tension matrix.
+The generated artifact is available at \texttt{outputs/reports\_1200/geometry\_atlas.html}.
+
+\section{Discussion}
+Findings support partial geometric convergence in compact models, strongest at shallow layers and conditional at deeper layers. Domain significance implies downstream transfer decisions should be domain-conditioned rather than globally averaged.
+
+\section{Reproducibility}
+All scripts, configs, prompts, and outputs are in-repo. Main commands:
+\begin{verbatim}
+python scripts/generate\_benchmark\_prompts.py --config configs/benchmark\_1200.yaml
+python scripts/extract\_geometry.py --config configs/models\_1200.yaml --prompts data/prompts\_1200.csv --out-dir outputs/geometry\_1200
+python scripts/evaluate\_multidim.py --benchmark-config configs/benchmark\_1200\_fast.yaml --geometry-dir outputs/geometry\_1200 --prompt-csv data/prompts\_1200.csv --out-dir outputs/reports\_1200 --bootstrap-sample-size 350
+python scripts/build\_geometry\_atlas.py --geometry-dir outputs/geometry\_1200 --reports-dir outputs/reports\_1200 --prompt-csv data/prompts\_1200.csv --out-html outputs/reports\_1200/geometry\_atlas.html --layer layer\_12
+\end{verbatim}
+
+\bibliographystyle{plain}
+\begin{thebibliography}{9}
+\bibitem{cka}
+Kornblith et al. Similarity of Neural Network Representations Revisited. ICML 2019.
+\bibitem{rsa}
+Kriegeskorte et al. Representational Similarity Analysis. Frontiers in Systems Neuroscience 2008.
+\bibitem{hf}
+Hugging Face model cards for LiquidAI, Google Gemma, and Qwen model families.
+\bibitem{vec2vec}
+Vec2Vec-style representation alignment work (insert exact citation metadata before submission).
+\end{thebibliography}
+
+\end{document}
+
+

@@ -1,0 +1,43 @@
+﻿models:
+  - name: lfm2_5_1_2b_instruct
+    repo_id: LiquidAI/LFM2.5-1.2B-Instruct
+    params_b: 1.2
+    family: lfm
+    revision: main
+  - name: gemma3_1b_it
+    repo_id: google/gemma-3-1b-it
+    params_b: 1.0
+    family: gemma
+    revision: main
+  - name: qwen2_5_0_5b_instruct
+    repo_id: Qwen/Qwen2.5-0.5B-Instruct
+    params_b: 0.5
+    family: qwen
+    revision: main
+  - name: qwen3_0_6b
+    repo_id: Qwen/Qwen3-0.6B
+    params_b: 0.6
+    family: qwen
+    revision: main
+  - name: qwen3_5_0_8b
+    repo_id: Qwen/Qwen3.5-0.8B
+    params_b: 0.8
+    family: qwen
+    revision: main
+
+download:
+  allow_patterns:
+    - "*.json"
+    - "*.model"
+    - "*.txt"
+    - "*.py"
+    - "*.safetensors"
+    - "*.bin"
+    - "tokenizer*"
+
+extraction:
+  max_prompts: 1200
+  max_new_tokens: 0
+  layers: [0, 4, 8, 12, 16]
+  batch_size: 8
+  max_length: 192

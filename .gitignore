@@ -24,6 +24,8 @@ outputs/*
 !outputs/reports_gemma_part3_360/**
 !outputs/reports_gemma_part4/
 !outputs/reports_gemma_part4/**
+!outputs/reports_gemma_part5/
+!outputs/reports_gemma_part5/**
 
 # OS/editor
 .DS_Store

@@ -1,0 +1,13 @@
+part5:
+  edges:
+    - [gemma1_1_2b_it, gemma2_2b_it, it_lineage]
+    - [gemma2_2b_it, gemma3_1b_it, it_lineage]
+    - [gemma3_1b_it, gemma3_4b_it, it_lineage]
+    - [gemma2_2b, gemma3_1b_pt, pt_lineage]
+    - [gemma3_1b_pt, gemma3_4b_pt, pt_lineage]
+    - [gemma2_2b, gemma2_2b_it, tune_shift]
+    - [gemma3_1b_pt, gemma3_1b_it, tune_shift]
+    - [gemma3_4b_pt, gemma3_4b_it, tune_shift]
+    - [gemma3_4b_it, lfm2_5_1_2b_thinking, cross_family]
+  top_modes: 5
+  spectrum_topk: 16

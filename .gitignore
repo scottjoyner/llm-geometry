@@ -22,6 +22,8 @@ outputs/*
 !outputs/reports_gemma_lfm_temporal_180/**
 !outputs/reports_gemma_part3_360/
 !outputs/reports_gemma_part3_360/**
+!outputs/reports_gemma_part4/
+!outputs/reports_gemma_part4/**
 
 # OS/editor
 .DS_Store

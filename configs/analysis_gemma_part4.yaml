@@ -1,0 +1,27 @@
+part4:
+  gemma_models:
+    - gemma1_1_2b_it
+    - gemma2_2b
+    - gemma2_2b_it
+    - gemma3_1b_pt
+    - gemma3_1b_it
+    - gemma3_4b_pt
+    - gemma3_4b_it
+    - codegemma_2b
+  lfm_models:
+    - lfm2_5_1_2b_base
+    - lfm2_5_1_2b_instruct
+    - lfm2_5_1_2b_thinking
+  it_path:
+    - gemma1_1_2b_it
+    - gemma2_2b_it
+    - gemma3_1b_it
+    - gemma3_4b_it
+  pt_path:
+    - gemma2_2b
+    - gemma3_1b_pt
+    - gemma3_4b_pt
+  tune_pairs:
+    - [gemma2_2b, gemma2_2b_it]
+    - [gemma3_1b_pt, gemma3_1b_it]
+    - [gemma3_4b_pt, gemma3_4b_it]

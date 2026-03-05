@@ -38,6 +38,17 @@ Primary config and outputs:
 - `outputs/reports_gemma_part3_360/`
 - `outputs/reports_gemma_lfm_temporal_180/`
 
+## Gemma Part 4 Drift Cartography
+```bash
+set PYTHONPATH=src
+python scripts/run_gemma_part4_suite.py
+```
+
+Primary Part 4 artifacts:
+- `configs/analysis_gemma_part4.yaml`
+- `docs/GEMMA_PART4_DRIFT_CARTOGRAPHY.md`
+- `outputs/reports_gemma_part4/`
+
 ## Reader Artifacts
 - Root PDF paper: `LLM_Geometry_Benchmark_1200.pdf`
 - LaTeX source: `docs/PAPER_1200.tex`
@@ -47,6 +58,8 @@ Primary config and outputs:
 - Part 3 temporal baseline: `docs/GEMMA_PART3_TEMPORAL_BASELINE.md`
 - Part 3 full observations: `docs/GEMMA_PART3_OBSERVATIONS.md`
 - Part 3 interactive dashboard: `outputs/reports_gemma_part3_360/gemma_part3_dashboard.html`
+- Part 4 full observations: `docs/GEMMA_PART4_DRIFT_CARTOGRAPHY.md`
+- Part 4 interactive dashboard: `outputs/reports_gemma_part4/gemma_part4_dashboard.html`
 
 ## Notes
 - Downloaded model binaries are kept out of git (`data/models/`).

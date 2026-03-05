@@ -25,12 +25,28 @@ python scripts/evaluate_multidim.py --benchmark-config configs/benchmark_1200_fa
 python scripts/build_geometry_atlas.py --geometry-dir outputs/geometry_1200 --reports-dir outputs/reports_1200 --prompt-csv data/prompts_1200.csv --out-html outputs/reports_1200/geometry_atlas.html --layer layer_12
 ```
 
+## Gemma Part 3 Drift Suite
+```bash
+set HF_TOKEN=your_hf_token
+set PYTHONPATH=src
+python scripts/run_gemma_part3_suite.py
+```
+
+Primary config and outputs:
+- `configs/models_gemma_part3.yaml`
+- `configs/benchmark_gemma_part3_360.yaml`
+- `outputs/reports_gemma_part3_360/`
+- `outputs/reports_gemma_lfm_temporal_180/`
+
 ## Reader Artifacts
 - Root PDF paper: `LLM_Geometry_Benchmark_1200.pdf`
 - LaTeX source: `docs/PAPER_1200.tex`
 - Abstract: `docs/ABSTRACT_1200.md`
 - Full observations: `docs/OBSERVATIONS_1200.md`
 - Interactive visualization: `outputs/reports_1200/geometry_atlas.html`
+- Part 3 temporal baseline: `docs/GEMMA_PART3_TEMPORAL_BASELINE.md`
+- Part 3 full observations: `docs/GEMMA_PART3_OBSERVATIONS.md`
+- Part 3 interactive dashboard: `outputs/reports_gemma_part3_360/gemma_part3_dashboard.html`
 
 ## Notes
 - Downloaded model binaries are kept out of git (`data/models/`).

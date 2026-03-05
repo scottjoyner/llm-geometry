@@ -1,0 +1,95 @@
+﻿models:
+  - name: gemma1_1_2b_it
+    repo_id: google/gemma-1.1-2b-it
+    params_b: 2.0
+    family: gemma
+    generation: 1.1
+    tune_type: it
+    revision: main
+  - name: gemma2_2b
+    repo_id: google/gemma-2-2b
+    params_b: 2.0
+    family: gemma
+    generation: 2.0
+    tune_type: pt
+    revision: main
+  - name: gemma2_2b_it
+    repo_id: google/gemma-2-2b-it
+    params_b: 2.0
+    family: gemma
+    generation: 2.0
+    tune_type: it
+    revision: main
+  - name: gemma3_1b_pt
+    repo_id: google/gemma-3-1b-pt
+    params_b: 1.0
+    family: gemma
+    generation: 3.0
+    tune_type: pt
+    revision: main
+  - name: gemma3_1b_it
+    repo_id: google/gemma-3-1b-it
+    params_b: 1.0
+    family: gemma
+    generation: 3.0
+    tune_type: it
+    revision: main
+  - name: gemma3_4b_pt
+    repo_id: google/gemma-3-4b-pt
+    params_b: 4.0
+    family: gemma
+    generation: 3.0
+    tune_type: pt
+    revision: main
+  - name: gemma3_4b_it
+    repo_id: google/gemma-3-4b-it
+    params_b: 4.0
+    family: gemma
+    generation: 3.0
+    tune_type: it
+    revision: main
+  - name: codegemma_2b
+    repo_id: google/codegemma-2b
+    params_b: 2.0
+    family: gemma
+    generation: 1.2
+    tune_type: code
+    revision: main
+  - name: lfm2_5_1_2b_base
+    repo_id: LiquidAI/LFM2.5-1.2B-Base
+    params_b: 1.2
+    family: lfm
+    generation: 2.5
+    tune_type: base
+    revision: main
+  - name: lfm2_5_1_2b_instruct
+    repo_id: LiquidAI/LFM2.5-1.2B-Instruct
+    params_b: 1.2
+    family: lfm
+    generation: 2.5
+    tune_type: instruct
+    revision: main
+  - name: lfm2_5_1_2b_thinking
+    repo_id: LiquidAI/LFM2.5-1.2B-Thinking
+    params_b: 1.2
+    family: lfm
+    generation: 2.5
+    tune_type: thinking
+    revision: main
+
+download:
+  allow_patterns:
+    - "*.json"
+    - "*.model"
+    - "*.txt"
+    - "*.py"
+    - "*.safetensors"
+    - "*.bin"
+    - "tokenizer*"
+
+extraction:
+  max_prompts: 360
+  max_new_tokens: 0
+  layers: [0, 2, 4, 6, 8, 10, 12]
+  batch_size: 2
+  max_length: 192

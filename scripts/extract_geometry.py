@@ -47,7 +47,16 @@ def main() -> None:
 
         out_path = out_dir / f"{model['name']}.npz"
         try:
-            extract_model_geometry(model["repo_id"], model_path, prompts, out_path, ex_cfg)
+            extract_model_geometry(
+                model["repo_id"],
+                model_path,
+                prompts,
+                out_path,
+                ex_cfg,
+                torch_dtype=model.get("torch_dtype", ext_cfg.get("torch_dtype")),
+                low_cpu_mem_usage=bool(model.get("low_cpu_mem_usage", ext_cfg.get("low_cpu_mem_usage", True))),
+                use_device_map=bool(model.get("use_device_map", ext_cfg.get("use_device_map", True))),
+            )
             print(f"Saved geometry tensors: {out_path}")
         except Exception as e:
             failures.append((model["name"], str(e)))

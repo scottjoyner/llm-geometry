@@ -49,17 +49,33 @@ def extract_model_geometry(
     prompts: list[str],
     out_path: str | Path,
     cfg: ExtractionConfig,
+    torch_dtype: str | None = None,
+    low_cpu_mem_usage: bool = True,
+    use_device_map: bool = True,
 ) -> None:
     tokenizer = AutoTokenizer.from_pretrained(model_dir, trust_remote_code=True)
     if tokenizer.pad_token is None and tokenizer.eos_token is not None:
         tokenizer.pad_token = tokenizer.eos_token
 
     use_cuda = torch.cuda.is_available()
-    model_kwargs = {
-        "dtype": torch.float16 if use_cuda else torch.float32,
-        "trust_remote_code": True,
+    dtype_map = {
+        "float16": torch.float16,
+        "fp16": torch.float16,
+        "float32": torch.float32,
+        "fp32": torch.float32,
+        "bfloat16": torch.bfloat16,
+        "bf16": torch.bfloat16,
     }
-    if use_cuda:
+    chosen_dtype = dtype_map.get((torch_dtype or "").lower(), None)
+    if chosen_dtype is None:
+        chosen_dtype = torch.float16 if use_cuda else torch.float32
+
+    model_kwargs = {
+        "torch_dtype": chosen_dtype,
+        "trust_remote_code": True,
+        "low_cpu_mem_usage": low_cpu_mem_usage,
+    }
+    if use_cuda and use_device_map:
         model_kwargs["device_map"] = "auto"
 
     model = AutoModelForCausalLM.from_pretrained(model_dir, **model_kwargs)

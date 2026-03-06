@@ -60,6 +60,19 @@ Primary Part 5 artifacts:
 - `docs/GEMMA_PART5_OPERATOR_ATLAS.md`
 - `outputs/reports_gemma_part5/`
 
+## Gemma 3 4B vs 27B
+```bash
+set HF_TOKEN=your_hf_token
+set PYTHONPATH=src
+python scripts/run_gemma_4b_27b_suite.py
+```
+
+Primary 4B vs 27B artifacts:
+- `configs/models_gemma_4b_27b.yaml`
+- `configs/benchmark_gemma_4b_27b_24.yaml`
+- `docs/GEMMA_4B_27B_COMPARISON.md`
+- `outputs/reports_gemma_4b_27b_24/`
+
 ## Reader Artifacts
 - Root PDF paper: `LLM_Geometry_Benchmark_1200.pdf`
 - LaTeX source: `docs/PAPER_1200.tex`
@@ -73,6 +86,7 @@ Primary Part 5 artifacts:
 - Part 4 interactive dashboard: `outputs/reports_gemma_part4/gemma_part4_dashboard.html`
 - Part 5 full observations: `docs/GEMMA_PART5_OPERATOR_ATLAS.md`
 - Part 5 interactive dashboard: `outputs/reports_gemma_part5/gemma_part5_dashboard.html`
+- Gemma 3 4B vs 27B comparison: `docs/GEMMA_4B_27B_COMPARISON.md`
 
 ## Notes
 - Downloaded model binaries are kept out of git (`data/models/`).

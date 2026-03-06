@@ -1,0 +1,2 @@
+model_a,model_b,mean_weight_geom_cosine,mean_weight_geom_l2,min_weight_geom_cosine,max_weight_geom_cosine
+gemma3_4b_it,gemma3_27b_it,0.9088277525061333,0.060076110668087504,0.8566465181559635,0.9843403801519847

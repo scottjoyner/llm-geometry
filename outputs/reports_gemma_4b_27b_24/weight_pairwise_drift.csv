@@ -1,0 +1,2 @@
+model_a,model_b,weight_cosine,weight_l2
+gemma3_27b_it,gemma3_4b_it,-0.11573291571453707,477.7018034897415

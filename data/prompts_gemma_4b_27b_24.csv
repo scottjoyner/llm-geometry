@@ -1,0 +1,25 @@
+id,domain,prompt
+0,logical_reasoning,"Given premises about a embedding, derive a contradiction test and project the conclusion for a latent map across two scales. [benchmark_id=logical_reasoning_000]"
+1,logical_reasoning,"Given premises about a geodesic, derive a contradiction test and cluster the conclusion for a distance matrix while preserving neighborhood topology. [benchmark_id=logical_reasoning_001]"
+2,logical_reasoning,"Given premises about a operator, derive a contradiction test and project the conclusion for a tensor across two scales. [benchmark_id=logical_reasoning_002]"
+3,logical_reasoning,"Given premises about a geodesic, derive a contradiction test and compare the conclusion for a embedding across two scales. [benchmark_id=logical_reasoning_003]"
+4,algebraic_geometry,"Compute an explicit mapping from a geodesic to a embedding, then optimize basis vectors and discuss rank behavior across two scales. [benchmark_id=algebraic_geometry_000]"
+5,algebraic_geometry,"Compute an explicit mapping from a manifold to a trajectory, then align basis vectors and discuss rank behavior with sparse observations. [benchmark_id=algebraic_geometry_001]"
+6,algebraic_geometry,"Compute an explicit mapping from a distance matrix to a manifold, then normalize basis vectors and discuss rank behavior with bounded curvature. [benchmark_id=algebraic_geometry_002]"
+7,algebraic_geometry,"Compute an explicit mapping from a operator to a operator, then stabilize basis vectors and discuss rank behavior under fixed token budget. [benchmark_id=algebraic_geometry_003]"
+8,analogy_composition,Complete the analogy: 'coordinate frame is to local structure as operator is to global structure'; then compare the relation while preserving neighborhood topology. [benchmark_id=analogy_composition_000]
+9,analogy_composition,Complete the analogy: 'polytope is to local structure as embedding is to global structure'; then perturb the relation under fixed token budget. [benchmark_id=analogy_composition_001]
+10,analogy_composition,Complete the analogy: 'latent map is to local structure as kernel is to global structure'; then optimize the relation with contrastive supervision. [benchmark_id=analogy_composition_002]
+11,analogy_composition,Complete the analogy: 'trajectory is to local structure as operator is to global structure'; then cluster the relation with bounded curvature. [benchmark_id=analogy_composition_003]
+12,factual_recall,"State concise facts about how a trajectory is used in machine learning, then cluster with a graph example under rotational invariance. [benchmark_id=factual_recall_000]"
+13,factual_recall,"State concise facts about how a projection is used in machine learning, then interpolate with a coordinate frame example under fixed token budget. [benchmark_id=factual_recall_001]"
+14,factual_recall,"State concise facts about how a vector field is used in machine learning, then normalize with a operator example with contrastive supervision. [benchmark_id=factual_recall_002]"
+15,factual_recall,"State concise facts about how a coordinate frame is used in machine learning, then compare with a geodesic example with contrastive supervision. [benchmark_id=factual_recall_003]"
+16,narrative_structure,"Write a short technical narrative where a researcher must stabilize a manifold and a polytope under rotational invariance, ending with a tradeoff. [benchmark_id=narrative_structure_000]"
+17,narrative_structure,"Write a short technical narrative where a researcher must perturb a graph and a tensor across two scales, ending with a tradeoff. [benchmark_id=narrative_structure_001]"
+18,narrative_structure,"Write a short technical narrative where a researcher must normalize a vector field and a basis with sparse observations, ending with a tradeoff. [benchmark_id=narrative_structure_002]"
+19,narrative_structure,"Write a short technical narrative where a researcher must interpolate a projection and a basis across two scales, ending with a tradeoff. [benchmark_id=narrative_structure_003]"
+20,symbolic_code,Provide pseudocode to project a basis into a manifold while preserving neighborhood topology; include complexity analysis and failure modes. [benchmark_id=symbolic_code_000]
+21,symbolic_code,Provide pseudocode to factorize a geodesic into a latent map with contrastive supervision; include complexity analysis and failure modes. [benchmark_id=symbolic_code_001]
+22,symbolic_code,Provide pseudocode to decompose a distance matrix into a kernel under rotational invariance; include complexity analysis and failure modes. [benchmark_id=symbolic_code_002]
+23,symbolic_code,Provide pseudocode to stabilize a projection into a distance matrix with bounded curvature; include complexity analysis and failure modes. [benchmark_id=symbolic_code_003]

@@ -1,0 +1,35 @@
+models:
+  - name: gemma3_4b_it
+    repo_id: google/gemma-3-4b-it
+    params_b: 4.0
+    family: gemma
+    generation: 3.0
+    tune_type: it
+    revision: main
+  - name: gemma3_27b_it
+    repo_id: google/gemma-3-27b-it
+    params_b: 27.0
+    family: gemma
+    generation: 3.0
+    tune_type: it
+    revision: main
+
+download:
+  allow_patterns:
+    - "*.json"
+    - "*.model"
+    - "*.txt"
+    - "*.py"
+    - "*.safetensors"
+    - "*.bin"
+    - "tokenizer*"
+
+extraction:
+  max_prompts: 24
+  max_new_tokens: 0
+  layers: [0, 6, 12]
+  batch_size: 1
+  max_length: 96
+  torch_dtype: float16
+  low_cpu_mem_usage: true
+  use_device_map: false
